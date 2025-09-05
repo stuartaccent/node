@@ -133,7 +133,7 @@ func (n *Node) renderTag(ctx context.Context, w io.Writer) error {
 }
 
 // renderAttr renders a NodeTypeAttr node: key[="value"]. Values are escaped; empty value emits a boolean attribute.
-func (n *Node) renderAttr(ctx context.Context, w io.Writer) error {
+func (n *Node) renderAttr(_ context.Context, w io.Writer) error {
 	if _, err := io.WriteString(w, n.Key); err != nil {
 		return err
 	}
@@ -152,7 +152,7 @@ func (n *Node) renderAttr(ctx context.Context, w io.Writer) error {
 }
 
 // renderText renders a NodeTypeText node, escaping HTML entities.
-func (n *Node) renderText(ctx context.Context, w io.Writer) error {
+func (n *Node) renderText(_ context.Context, w io.Writer) error {
 	_, err := io.WriteString(w, html.EscapeString(n.Value))
 	return err
 }
